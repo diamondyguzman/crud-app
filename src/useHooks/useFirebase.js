@@ -1,7 +1,6 @@
 import React from 'react';
-import firebase from '../../node_modules/firebase/compat/app';
+import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
-
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
