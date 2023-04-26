@@ -2,29 +2,50 @@ import React from 'react';
 import '@/styles/globals.css'
 import useFirebase from '@/useHooks/useFirebase';
 import Link from 'next/link';
+import {GlobalProvider} from '../useHooks/useGlobalValues';
+
+import NavStyles from '../styles/Nav.module.css';
+import HeroStyles from '../styles/Hero.module.css';
 
 export default function App({ Component, pageProps }) {
+  const intilalGlobalValues ={
+    booksList:[],
+    error:'',
+  };
+  const [globalValues,setGlobalValues] = React.useState(intilalGlobalValues);
+
+  function updateGlobalValues(newValues){
+    setGlobalValues({...globalValues, ...newValues});
+  }
+ 
+  
   const firebase = useFirebase();
+  
   return (
     <>
-
-      <nav>
-        <ul>
-          <li>
-            <Link href='/'>Home</Link>
-          </li>
-          <li>
-            {firebase.currentUser.email ? (
-               <button onClick={firebase.logOutUser}>Logout</button>
-            ):(
-              <button onClick={firebase.loginUser}>Login</button>
-            )}
+    <GlobalProvider value={{...globalValues,update: updateGlobalValues}}>
+      <nav className={NavStyles.nav}>
+          <ul>
+            <li>
+              <Link href='/'>Home</Link>
+            </li>
            
-          </li>
-          
-        </ul>
+            
+            <li>
+              {firebase.currentUser.email ? (
+                <button onClick={firebase.logOutUser} className={NavStyles.login}>Logout</button>
+              ):(
+                <button onClick={firebase.loginUser} className={NavStyles.login}>Login</button>
+              )}
+            
+            </li>
+            
+          </ul>
       </nav>
-      <Component {...pageProps} />
+      <div className={HeroStyles.hero}></div>
+        <Component {...pageProps} />
+    </GlobalProvider>
+      
 
     </>
   ) 

@@ -1,0 +1,36 @@
+.home{
+  width: 60%;
+  margin: 25px auto;
+  
+}
+
+.name{
+    color: darkseagreen;
+    font-style: italic;
+}
+
+.about{
+    width:800px;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+.aboutImage{
+    width: 395px;
+    height: 300px;
+    
+}
+.aboutInfo{
+    width:395px;
+    height: 300px;
+    padding: 20px 15px;
+}
+.btn{
+    width: 50%;
+    background-color: darkseagreen;
+    border: 2px solid black;
+    border-radius: 3px;
+    margin: 25px 200px;
+}

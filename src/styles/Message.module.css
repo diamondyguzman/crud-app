@@ -1,0 +1,20 @@
+.message{
+    width: 50%;
+    margin: 50px auto;
+    height: 150px;
+    padding: 16px 16px 0;
+    border: 1px solid #000;
+    font-size:25px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.error{
+    background-color: rgb(184, 3, 3);
+}
+.info{
+    background-color: cadetblue;
+}
+.success{
+    background-color: #fefe4d;
+}
