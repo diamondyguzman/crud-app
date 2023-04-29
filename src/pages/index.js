@@ -19,13 +19,12 @@ export default function HomePage(){
   });
 
   const booksListComponents = booksList.map(book=>{
-    return <li className={ProductStyles.event}  key={book.id}>
-            <div className={ProductStyles.title}>
-                  {book.name}
-            <div className={ProductStyles.desc}><span>About : </span> {book.desc}</div>
-            <div className={ProductStyles.author}> <span>Author : </span>{book.Author}</div>
-              </div>
-            </li>
+    return <div key={book.id} className={ProductStyles.event}>
+    <div  className={ProductStyles.title}>{book.name}</div>
+    <div className={ProductStyles.desc}><span>About : </span>{book.desc}</div>
+    <div className={ProductStyles.author}> <span>Author : </span> {book.Author}</div>
+    </div>
+
   });
 
   async function pullBooksFromDb(){
@@ -111,9 +110,21 @@ export default function HomePage(){
             <div className={ProductStyles.desc}><span>About : </span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit asperiores, eos nostrum consequatur, accusamus ea quos recusandae nihil blanditiis nulla, praesentium autem id rerum. Id corporis hic consectetur est ipsum! nihil blanditiis nulla, praesentium autem id rerum. Id corporis hic consectetur est ipsum! nihil blanditiis nulla, praesentium autem id rerum. Id corporis hic consectetur est ipsum! </div>
             <div className={ProductStyles.author}> <span>Author : </span> Bill Johnson </div>
           </div>
-        </div>
-
-        <div className={ProductStyles.list}>
+          <div className={ProductStyles.event}>
+            <div  className={ProductStyles.title}>Beloved</div>
+            <div className={ProductStyles.desc}><span>About :  </span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit asperiores, eos nostrum consequatur, accusamus ea quos recusandae nihil blanditiis nulla, praesentium autem id rerum. Id corporis hic consectetur est ipsum! nihil blanditiis nulla, praesentium autem id rerum. Id corporis hic consectetur est ipsum! nihil blanditiis nulla, praesentium autem id rerum. Id corporis hic consectetur est ipsum!</div>
+            <div className={ProductStyles.author}> <span>Author : </span>Deon Williams</div>
+          </div>
+          <div className={ProductStyles.event}>
+            <div  className={ProductStyles.title}> StarLight</div>
+            <div className={ProductStyles.desc}><span>About :</span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit asperiores, eos nostrum consequatur, accusamus ea quos recusandae nihil blanditiis nulla, praesentium autem id rerum. Id corporis hic consectetur est ipsum! nihil blanditiis nulla, praesentium autem id rerum. Id corporis hic consectetur est ipsum! nihil blanditiis nulla, praesentium autem id rerum. Id corporis hic consectetur est ipsum! </div>
+            <div className={ProductStyles.author}> <span>Author : </span> Kathy Lu </div>
+          </div>
+          <div className={ProductStyles.event}>
+            <div  className={ProductStyles.title}> Big Brother</div>
+            <div className={ProductStyles.desc}><span>About :</span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit asperiores, eos nostrum consequatur, accusamus ea quos recusandae nihil blanditiis nulla, praesentium autem id rerum. Id corporis hic consectetur est ipsum! nihil blanditiis nulla, praesentium autem id rerum. Id corporis hic consectetur est ipsum! nihil blanditiis nulla, praesentium autem id rerum. Id corporis hic consectetur est ipsum! </div>
+            <div className={ProductStyles.author}> <span>Author : </span> The Government </div>
+          </div>
           <div className={ProductStyles.event}>
             <div  className={ProductStyles.title}>The Great Gatsby</div>
             <div className={ProductStyles.desc}><span>About : </span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit asperiores, eos nostrum consequatur, accusamus ea quos recusandae nihil blanditiis nulla, praesentium autem id rerum. Id corporis hic consectetur est ipsum! nihil blanditiis nulla, praesentium autem id rerum. Id corporis hic consectetur est ipsum! nihil blanditiis nulla, praesentium autem id rerum. Id corporis hic consectetur est ipsum! </div>
@@ -131,29 +142,16 @@ export default function HomePage(){
           </div>
         </div>
 
+        <div className={ProductStyles.header}>
+            <h1>Your Books</h1>
+        </div>
         <div className={ProductStyles.list}>
-          <div className={ProductStyles.event}>
-            <div  className={ProductStyles.title}>Beloved</div>
-            <div className={ProductStyles.desc}><span>About :  </span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit asperiores, eos nostrum consequatur, accusamus ea quos recusandae nihil blanditiis nulla, praesentium autem id rerum. Id corporis hic consectetur est ipsum! nihil blanditiis nulla, praesentium autem id rerum. Id corporis hic consectetur est ipsum! nihil blanditiis nulla, praesentium autem id rerum. Id corporis hic consectetur est ipsum!</div>
-            <div className={ProductStyles.author}> <span>Author : </span>Deon Williams</div>
-          </div>
-          <div className={ProductStyles.event}>
-            <div  className={ProductStyles.title}> StarLight</div>
-            <div className={ProductStyles.desc}><span>About :</span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit asperiores, eos nostrum consequatur, accusamus ea quos recusandae nihil blanditiis nulla, praesentium autem id rerum. Id corporis hic consectetur est ipsum! nihil blanditiis nulla, praesentium autem id rerum. Id corporis hic consectetur est ipsum! nihil blanditiis nulla, praesentium autem id rerum. Id corporis hic consectetur est ipsum! </div>
-            <div className={ProductStyles.author}> <span>Author : </span> Kathy Lu </div>
-          </div>
-          <div className={ProductStyles.event}>
-            <div  className={ProductStyles.title}> Big Brother</div>
-            <div className={ProductStyles.desc}><span>About :</span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit asperiores, eos nostrum consequatur, accusamus ea quos recusandae nihil blanditiis nulla, praesentium autem id rerum. Id corporis hic consectetur est ipsum! nihil blanditiis nulla, praesentium autem id rerum. Id corporis hic consectetur est ipsum! nihil blanditiis nulla, praesentium autem id rerum. Id corporis hic consectetur est ipsum! </div>
-            <div className={ProductStyles.author}> <span>Author : </span> The Government </div>
-          </div>
+            {booksListComponents}
+            
+          
         </div>
-        
 
-        <div className={ProductStyles.products}>
-          <div className={ProductStyles.header}><h1>Your Books</h1></div>
-          <ul className={ProductStyles.productList}>{booksListComponents}</ul>
-        </div>
+        
 
         { firebase.currentUser.email ?(
           <>

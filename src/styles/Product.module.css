@@ -1,31 +1,29 @@
 .products{
-    /* background-color: blueviolet; */
+    background-color: blueviolet;
     margin-top: 20px;
 }
-.productList{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    list-style: none;
-}
+
 .list{
     display: flex;
-    margin-top: 30px;
-    
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+   background-color: cadetblue;
+   list-style: none;
 }
 .event{
-    width: 400px;
-    height: 250px;
-    /* background-color: burlywood; */
+    width: 300px;
+   
+    background-color: burlywood;
     border-radius: 5px;
     margin: 15px 0px;
     text-align: center;
     padding: 2px;
     
 }
-.event ul{
+.event li{
     display: flex ;
-    align-items: center;
+   
     justify-content: center;
 }
 .event span{
