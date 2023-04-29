@@ -10,6 +10,7 @@ import HeroStyles from '../styles/Hero.module.css';
 export default function App({ Component, pageProps }) {
   const intilalGlobalValues ={
     booksList:[],
+    booksListLoadTime:0,
     error:'',
   };
   const [globalValues,setGlobalValues] = React.useState(intilalGlobalValues);
@@ -20,6 +21,12 @@ export default function App({ Component, pageProps }) {
  
   
   const firebase = useFirebase();
+  
+  async function clearGlobalValues(){
+    await firebase.logOutUser();
+    setGlobalValues(intilalGlobalValues);
+
+  }  
   
   return (
     <>
@@ -33,7 +40,7 @@ export default function App({ Component, pageProps }) {
             
             <li>
               {firebase.currentUser.email ? (
-                <button onClick={firebase.logOutUser} className={NavStyles.login}>Logout</button>
+                <button onClick={clearGlobalValues} className={NavStyles.login}>Logout</button>
               ):(
                 <button onClick={firebase.loginUser} className={NavStyles.login}>Login</button>
               )}

@@ -7,8 +7,16 @@ import ProductStyles from '../styles/Product.module.css';
 import Image from 'next/image';
 export default function HomePage(){
   const firebase = useFirebase();
-  const {booksList,update,error}= useGlobalValues();
+  const {booksList,update,error, booksListLoadTime}= useGlobalValues();
 
+  // loads books automatically
+  // uses anonymous function
+  React.useEffect(function (){
+    if(!firebase.currentUser.email)return;
+    if(Date.now() -booksListLoadTime < 1000* 60 * 30)return;
+    pullBooksFromDb();
+      
+  });
   const booksListComponents = booksList.map(book=>{
     return <div className={ProductStyles.event}>
             <div  className={ProductStyles.title}key={book.id}>{book.name}</div>
@@ -18,11 +26,11 @@ export default function HomePage(){
   })
 
   async function pullBooksFromDb(){
+    update({ booksListLoadTime:Date.now()})
     try{
       if (!firebase.currentUser.email) throw {code:'auth-failed', name:'Firebase Auth'};
       const books = await firebase.getBooks();
       update({ booksList:books , error:' '});
-      
     }catch (e){
       if(e.code === 'auth-failed' && e.name === 'Firebase Auth'){
         update({error:`${e.name} (${e.code}): You need to login for getting the book list`});
@@ -144,16 +152,21 @@ export default function HomePage(){
           <ul className={ProductStyles.productList}>{booksListComponents}</ul>
         </div>
 
-        
-        <button onClick={pullBooksFromDb} className={HomeStyles.btn}>Load Your Books</button>
+        { firebase.currentUser.email ?(
+          <>
+          
+            <button onClick={pullBooksFromDb} className={HomeStyles.btn}>Refresh Books</button>
+          </>
+        ) :(
+          <></>
+        )}
         
 
         {error ? (
           <>
             <Message type='error'>{error}</Message>
           </>): (
-          <>      
-
+          <>     
           </>
         )}
       </div>
