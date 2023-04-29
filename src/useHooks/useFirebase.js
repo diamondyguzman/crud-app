@@ -55,8 +55,7 @@ export default function useFirebase(){
                     id:book.id,
                 });
             }
-
             return booksList;
-        }    
+        },  
     };
 }

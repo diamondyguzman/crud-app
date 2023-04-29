@@ -17,13 +17,16 @@ export default function HomePage(){
     pullBooksFromDb();
       
   });
+
   const booksListComponents = booksList.map(book=>{
-    return <div className={ProductStyles.event}>
-            <div  className={ProductStyles.title}key={book.id}>{book.name}</div>
+    return <li className={ProductStyles.event}  key={book.id}>
+            <div className={ProductStyles.title}>
+                  {book.name}
             <div className={ProductStyles.desc}><span>About : </span> {book.desc}</div>
             <div className={ProductStyles.author}> <span>Author : </span>{book.Author}</div>
-           </div>
-  })
+              </div>
+            </li>
+  });
 
   async function pullBooksFromDb(){
     update({ booksListLoadTime:Date.now()})
@@ -161,7 +164,6 @@ export default function HomePage(){
           <></>
         )}
         
-
         {error ? (
           <>
             <Message type='error'>{error}</Message>
