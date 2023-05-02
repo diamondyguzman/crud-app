@@ -27,10 +27,16 @@
     height: 300px;
     padding: 20px 15px;
 }
+.buttonHolder{
+    display: flex;
+    align-items:center;
+    justify-content: space-around;
+}
 .btn{
-    width: 50%;
+    width: 40%;
     background-color: darkseagreen;
     border: 2px solid black;
     border-radius: 3px;
     margin: 25px auto;
+
 }
