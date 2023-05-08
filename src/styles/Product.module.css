@@ -1,5 +1,5 @@
 .products{
-    background-color: blueviolet;
+    /* background-color: blueviolet; */
     margin-top: 20px;
 }
 
@@ -8,13 +8,13 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-   background-color: cadetblue;
+   /* background-color: cadetblue; */
    list-style: none;
 }
 .event{
     width: 300px;
    
-    background-color: burlywood;
+    /* background-color: burlywood; */
     border-radius: 5px;
     margin: 15px 0px;
     text-align: center;
@@ -36,7 +36,10 @@
     font-size: 30px;
    
 }
-
+.event a{
+    text-decoration: none;
+    color: black;
+}
 .desc{
     margin: 20px auto;
     width: 60%;

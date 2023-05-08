@@ -6,8 +6,10 @@ import {GlobalProvider} from '../useHooks/useGlobalValues';
 
 import NavStyles from '../styles/Nav.module.css';
 import HeroStyles from '../styles/Hero.module.css';
+import { useRouter } from 'next/router';
 
 export default function App({ Component, pageProps }) {
+  const router = useRouter();
   const intilalGlobalValues ={
     booksList:[],
     booksListLoadTime:0,
@@ -31,10 +33,28 @@ export default function App({ Component, pageProps }) {
   return (
     <>
     <GlobalProvider value={{...globalValues,update: updateGlobalValues}}>
+    <div className={NavStyles.vl}></div>
       <nav className={NavStyles.nav}>
-          <ul>
+        <ul>
             <li>
               <Link href='/'>Home</Link>
+            </li>
+            <li>
+              <Link href='/about'>About</Link>
+            </li>
+            <li>
+              <Link href='/contact'>Contact</Link>
+            </li>
+            <li>
+              <Link href='/books'>Our Books</Link>
+            </li>
+            <li>
+              {firebase.currentUser.email ?(
+                <Link href='/your-books'>Your Picks</Link>
+              ):(
+                ' '
+              )}
+              
             </li>
            
             
@@ -47,9 +67,10 @@ export default function App({ Component, pageProps }) {
             
             </li>
             
-          </ul>
+        </ul>          
       </nav>
-      <div className={HeroStyles.hero}></div>
+     
+      
         <Component {...pageProps} />
     </GlobalProvider>
       

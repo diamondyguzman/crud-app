@@ -1,0 +1,45 @@
+.books{
+    margin: 50px auto;
+    width: 60%;
+    height:400px;
+    background-color:white ;
+    display: flex;
+}
+.image{
+    width: 40%;
+    height: 100%;
+    background-color: white;
+
+}
+.image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.list{
+    width: 60%;
+   
+}
+.details{
+    
+    display: flex;
+    justify-content:space-evenly;
+}
+.details div{
+    padding: 10px;
+    width: 75%;
+    overflow: hidden;
+}
+
+.buttonHolder{
+    margin: 0 auto;
+   width: 20%;
+}
+.buttonHolder button{
+    width: 100%;
+    background-color: darkseagreen;
+    border: 2px solid black;
+    border-radius: 3px;
+    margin: 25px auto;
+    cursor: pointer;
+}

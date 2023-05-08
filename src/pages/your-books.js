@@ -7,11 +7,11 @@ import Modal from '../components/Modal';
 import ModalStyles from '../styles/Modal.module.css';
 import HomeStyles from '../styles/Home.module.css';
 import ProductStyles from '../styles/Product.module.css';
-import HeroStyles from '../styles/Hero.module.css';
-import Image from 'next/image';
+
 import Link from 'next/link';
 
-export default function HomePage(){
+export default function YourBookPage(){
+  
   const firebase = useFirebase();
   const {booksList,update,error, booksListLoadTime}= useGlobalValues();
 
@@ -25,7 +25,7 @@ export default function HomePage(){
   });
 
   const booksListComponents = booksList.map(book=>{
-    return <div key={book.id} className={ProductStyles.event}><Link href={`/book/${book.id}`}>
+    return <div key={book.id} className={ProductStyles.event}><Link href={`/your-books/${book.id}`}>
     <div  className={ProductStyles.title}>{book.name}</div></Link>
     <div className={ProductStyles.desc}><span>About : </span>{book.desc}</div>
     <div className={ProductStyles.author}> <span>Author : </span> {book.Author}</div>
@@ -91,47 +91,42 @@ export default function HomePage(){
 
   return(
     <>
-    <div className={HeroStyles.hero}></div>
-      <div className={HomeStyles.wrapper}>
-        <h1 className={HomeStyles.greeting}>Welcome<span className={HomeStyles.name}> {firebase.currentUser.displayName  || ' '} </span></h1>
+    <div>
+        <div className={ProductStyles.header}>
+            <h1>Your Books</h1>
+        </div>
+        <div className={HomeStyles.wrapper}>
+                <div className={ProductStyles.list}>
+                  {booksListComponents}
+                </div>        
+        </div>
 
-        <div className={HomeStyles.about}>
-            <div className={HomeStyles.aboutImage}>
-              <Image
-              src="/images/smokeytrees.jpg"
-              alt="Bird"
-              width={400}
-              height={300}
-              
-              />
-            </div>
+        
 
-            <div className={HomeStyles.aboutInfo}>
-              <div>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit asperiores, eos nostrum consequatur, accusamus ea quos recusandae nihil blanditiis nulla, praesentium autem id rerum. Id corporis hic consectetur est ipsum! nihil blanditiis nulla, praesentium autem id rerum. Id corporis hic consectetur est ipsum! nihil blanditiis nulla, praesentium autem id rerum. Id corporis hic consectetur est ipsum!
-
+        { firebase.currentUser.email ?(
+          <>
+            <div className={HomeStyles.buttonHolder}>
+              <button onClick={pullBooksFromDb} className={HomeStyles.btn}>Refresh Books</button>
+              <div className={ModalStyles.modalbtnHolder}>
+                <Modal trigger={<button className={ModalStyles.modalbtn}>Add Book</button>}>
+                                <BookForm addMyBook={addMyBook} />
+                              </Modal> 
               </div>
+              
             </div>
-
           
-        </div> 
-
-        <div className={HomeStyles.about}>
-          <div className={HomeStyles.aboutInfo}>
-            <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit asperiores, eos nostrum consequatur, accusamus ea quos recusandae nihil blanditiis nulla, praesentium autem id rerum. Id corporis hic consectetur est ipsum! nihil blanditiis nulla, praesentium autem id rerum. Id corporis hic consectetur est ipsum! nihil blanditiis nulla, praesentium autem id rerum. Id corporis hic consectetur est ipsum!</div>
-          </div>
-
-          <div className={HomeStyles.aboutImage}>
-          <Image
-           src="/images/bird.jpg"
-           alt="Bird"
-           width={400}
-           height={300}
-          
-           />
-          </div> 
-
-        </div>      
+          </>
+        ) :(
+          <></>
+        )}
+        
+        {error ? (
+          <>
+            <Message type='error'>{error}</Message>
+          </>): (
+          <>     
+          </>
+        )}
       </div>
     </>
   )

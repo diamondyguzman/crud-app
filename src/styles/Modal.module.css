@@ -14,6 +14,21 @@
     max-width: 75%;
     padding:24px;
 }
+.modalbtnHolder{
+    width: 50%;
+    margin: 0 auto;
+    display: flex;
+    align-items:center;
+    justify-content:center;
+    
+}
+.modalbtn{
+    width: 20vw;
+    background-color: seagreen;
+    border: 2px solid black;
+    border-radius: 3px;
+    margin: 25px auto;
+}
 .modal button.close{
     position: fixed;
     top: 0;

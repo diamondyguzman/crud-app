@@ -3,7 +3,9 @@ import React from 'react';
 export default function BookForm({addMyBook}){
 const [bookDetails,setBookDetails] = React.useState({
     name:' ',
-    year:2000,
+    author:' ',
+    desc:' ',
+    image:' ',
 })
 
     async function submitForm(e){
@@ -25,8 +27,16 @@ const [bookDetails,setBookDetails] = React.useState({
                 <input name='name' type='text' value={bookDetails.name} onChange={updateBookDetails}/>
               </div>
               <div>
-                <label>Book Year:</label>
-                <input name='year' type='number' step='1' value={bookDetails.year} onChange={updateBookDetails}/>
+                <label>Book Description:</label>
+                <input name='desc' type='text' value={bookDetails.desc} onChange={updateBookDetails}/>
+              </div>
+              <div>
+                <label>Book Cover:</label>
+                <input name='image' type='text'value={bookDetails.image} onChange={updateBookDetails}/>
+              </div>
+              <div>
+                <label>Book Author:</label>
+                <input name='author' type='text' step='1' value={bookDetails.author} onChange={updateBookDetails}/>
               </div>
               <div>
                 <button  type='submit'>Add</button>
