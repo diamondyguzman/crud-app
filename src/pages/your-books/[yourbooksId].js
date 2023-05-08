@@ -26,29 +26,7 @@ export default function YourBookViewPage(){
     const currentBook = booksList.find(book=>
         book.id === yourbooksId);
     
-    const booksListComponents = booksList.map(book=>{
-      return <div className={ProductDetailStyles.books}>
-      <div className={ProductDetailStyles.image}>
-          { <img src={`${book.image}`}/> }
-      </div>        
-      <div className={ProductDetailStyles.list}>
-          <div className={ProductDetailStyles.details}>
-              <div>Title : </div>
-              <div>{book.name}</div>
-          </div>
-          <div className={ProductDetailStyles.details}>
-            <div>Author : </div>
-            <div>{book.Author}</div>
-          </div>
-          <div className={ProductDetailStyles.details}>
-              <div>Description : </div>
-              <div>{book.desc}</div>
-          </div>
-  </div>
-                       
-  </div> 
-  
-    });
+   
   
     async function pullBooksFromDb(){
   
@@ -81,7 +59,7 @@ export default function YourBookViewPage(){
                 <div className={ProductDetailStyles.list}>
                     <div className={ProductDetailStyles.details}>
                         <div>Title : </div>
-                        <div>{currentBook.name }</div>
+                        <div>{currentBook.name }jjj</div>
                     </div>
                     <div className={ProductDetailStyles.details}>
                         <div>Author : </div>
