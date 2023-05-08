@@ -12,7 +12,7 @@ export default function YourBookViewPage(){
     const firebase = useFirebase();
     const {yourbooksId}= router.query;    
 
-    const {booksList,update,error, booksListLoadTime}= useGlobalValues();
+    const {booksList,update, booksListLoadTime}= useGlobalValues();
   
     // loads books automatically
     // uses anonymous function
@@ -26,8 +26,6 @@ export default function YourBookViewPage(){
     const currentBook = booksList.find(book=>
         book.id === yourbooksId);
     
-   
-  
     async function pullBooksFromDb(){
   
       try{
@@ -46,9 +44,6 @@ export default function YourBookViewPage(){
       }
         
     };
-  
-   
-
     return(
         <>
        
