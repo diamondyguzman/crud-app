@@ -49,7 +49,7 @@ export default function YourBookViewPage(){
        
         <div className={ProductDetailStyles.books}>
                 <div className={ProductDetailStyles.image}> 
-                    <img src={`${currentBook.image}`}/>
+                    {/* <img src={`${currentBook.image}`}/> */}
                 </div>
                 <div className={ProductDetailStyles.list}>
                     <div className={ProductDetailStyles.details}>
