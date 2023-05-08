@@ -46,8 +46,8 @@ export default function YourBookViewPage(){
     };
     return(
         <>
-       <h1>HELLO</h1>
-         {/* <div className={ProductDetailStyles.books}>
+       
+         <div className={ProductDetailStyles.books}>
                 <div className={ProductDetailStyles.image}> 
                     <img src={`${currentBook.image}`}/>
                 </div>
@@ -73,7 +73,7 @@ export default function YourBookViewPage(){
                <Link href={`/your-books`}><button>Back</button>
                </Link> 
             </div>
-                 */}
+                
         </>
     )
 }
