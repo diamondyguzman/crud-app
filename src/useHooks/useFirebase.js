@@ -47,15 +47,15 @@ export default function useFirebase(){
         },
         async getBooks(){
             const booksSnapshot = await db.collection('books').get();
-            const yourbooksList = [];
+            const booksList = [];
             for(let book of booksSnapshot.docs){
                 const bookData = book.data();
-                yourbooksList.push({
+                booksList.push({
                     ...bookData,
                     id:book.id,
                 });
             }
-            return yourbooksList;
+            return booksList;
         },  
         async addBook(booksInfo){
             const booksSnapshot = await db.collection('books').add(booksInfo);
