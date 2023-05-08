@@ -49,6 +49,9 @@ export default function App({ Component, pageProps }) {
               <Link href='/books'>Our Books</Link>
             </li>
             <li>
+              <Link href='/books'>Our Books</Link>
+            </li>
+            <li>
               {firebase.currentUser.email ?(
                 <Link href='/your-books'>Your Picks</Link>
               ):(
