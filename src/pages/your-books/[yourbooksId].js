@@ -59,7 +59,7 @@ export default function YourBookViewPage(){
                 <div className={ProductDetailStyles.list}>
                     <div className={ProductDetailStyles.details}>
                         <div>Title : </div>
-                        <div>{currentBook.name }jjj</div>
+                        <div>{currentBook.name }</div>
                     </div>
                     <div className={ProductDetailStyles.details}>
                         <div>Author : </div>
